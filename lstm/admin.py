@@ -9,6 +9,5 @@ class IndexValueAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(index_value, IndexValueAdmin)
-admin.site.register(prediction_value, IndexValueAdmin)
 
 

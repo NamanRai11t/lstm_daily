@@ -5,6 +5,7 @@ from .forms import *
 from .lstm_new import *
 import datetime
 import matplotlib.pyplot as plt
+import os
 
 # Create your views here.
 def update(request):
@@ -18,10 +19,10 @@ def update(request):
 			predicted, fifty_day = predict_for_view(index_values)
 			fig = plt.figure(facecolor='white')
 			ax = fig.add_subplot(111)
-			ax.plot(fifty_day, label="data so far")
-			padding = [None for i in range(len(fifty_day))]
-			plt.plot(padding + [predicted], label="predicted data")
-			plt.savefig('C:\\Users\\naman\\Desktop\\lstm_daily\\lstm_daily\\lstm\\static\\lstm\\plot.png')
+			fifty_day.append(predicted)
+			ax.plot(fifty_day, label="data")
+			BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+			plt.savefig(os.path.join(BASE_DIR,'lstm\\static\\lstm\\plot.png'))  # 'C:\\Users\\naman\\Desktop\\lstm_daily\\lstm_daily\\lstm\\static\\lstm\\plot.png')
 			return HttpResponseRedirect('/predictions/')
 	else:
 		Update = UpdateForm()
