@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1> Update model and re-plot. </h1>
+		<form action="/update/" method="POST">
+			{% csrf_token %}
+			{{ UpdateForm }}
+			<input type="submit" value="Update" />
+		</form>
+	</body>
+</html>
